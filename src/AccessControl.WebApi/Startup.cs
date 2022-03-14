@@ -1,6 +1,7 @@
 using AccessControl.WebApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using NetCasbin;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -11,6 +12,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
+using NetCasbin.Model;
+using AccessControl.WebApi.Infrastructure.Adapters;
+using AccessControl.WebApi.Infrastructure.Utils;
 
 namespace AccessControl.WebApi
 {
@@ -27,6 +32,10 @@ namespace AccessControl.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<CasbinAdapter>();
+            services.AddScoped(
+                s => new Enforcer(RBACUtils.GetDefaultConfiguration(), s.GetService<CasbinAdapter>())
+            );
             services.AddTransient<ListPermissionsService>();
         }
 
