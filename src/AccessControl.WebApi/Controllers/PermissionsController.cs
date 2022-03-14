@@ -1,5 +1,6 @@
 ﻿using AccessControl.WebApi.Requests;
 using AccessControl.WebApi.Responses;
+using AccessControl.WebApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,14 +12,13 @@ namespace AccessControl.WebApi.Controllers
     public class PermissionsController : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<ListPermissionsResponse>> GetPermissionsAsync
+        public async Task<ActionResult<ListPermissionsResponse>> ListPermissionsAsync
         (
+            [FromServices] ListPermissionsService service,
             [FromQuery] ListPermissionsRequest request
         )
         {
-            await Task.Delay(1000);
-            var result = new ListPermissionsResponse();
-            result.Add(new PermissionResponse() { Subject = request.Subjects[0], Component = "component1", Action = "read" });
+            var result = await service.ListPermissionsAsync(request);
             return Ok(result);
         }
     }
