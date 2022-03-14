@@ -1,51 +1,38 @@
 ﻿using AccessControl.WebApi.Requests;
 using AccessControl.WebApi.Responses;
-using NetCasbin;
-using System;
-using System.Linq;
+using Amazon.DynamoDBv2.DataModel;
+using Amazon.DynamoDBv2.DocumentModel;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AccessControl.WebApi.Services
 {
     public class ListPermissionsService
     {
-        private readonly Enforcer _enforcer;
+        private readonly DynamoDBContext _context;
 
-        public ListPermissionsService(Enforcer enforcer)
+        public ListPermissionsService(DynamoDBContext context)
         {
-            _enforcer = enforcer;
+            _context = context;
         }
 
         /// <summary>
-        /// List permissions
+        /// List permissions from dynamodb
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
         public async Task<ListPermissionsResponse> ListPermissionsAsync(ListPermissionsRequest request)
         {
+            var conditions = new List<ScanCondition> 
+            { 
+                new ScanCondition("subject", ScanOperator.Contains, request.Subjects), 
+            };
+
+            var items = await _context.ScanAsync<PermissionResponse>(conditions).GetRemainingAsync();
+
             var response = new ListPermissionsResponse();
-
-            foreach (var subject in request.Subjects)
-            {
-                var list = await Task.Run(() => _enforcer.GetPermissionsForUser(subject));
-
-                if (list.Any())
-                {
-                    foreach (var item in list)
-                    {
-                        if(!string.IsNullOrEmpty(item.First()))
-                        {
-                            response.Add(new PermissionResponse
-                            {
-                                Subject = item[0],
-                                Domain = item[1],
-                                Component = item[2],
-                                Action = item[3],
-                            });
-                        }
-                    }
-                }
-            }
+            
+            response.AddRange(items);
 
             return response;
         }

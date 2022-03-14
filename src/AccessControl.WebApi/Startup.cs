@@ -1,21 +1,13 @@
 using AccessControl.WebApi.Services;
+using Amazon;
+using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DataModel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using NetCasbin;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.IO;
-using NetCasbin.Model;
-using AccessControl.WebApi.Infrastructure.Adapters;
-using AccessControl.WebApi.Infrastructure.Utils;
 
 namespace AccessControl.WebApi
 {
@@ -32,10 +24,8 @@ namespace AccessControl.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<CasbinAdapter>();
-            services.AddScoped(
-                s => new Enforcer(RBACUtils.GetDefaultConfiguration(), s.GetService<CasbinAdapter>())
-            );
+            services.AddScoped(s => new AmazonDynamoDBClient(RegionEndpoint.GetBySystemName(Environment.GetEnvironmentVariable("AWS_REGION"))));
+            services.AddScoped(s => new DynamoDBContext(s.GetService<AmazonDynamoDBClient>()));
             services.AddTransient<ListPermissionsService>();
         }
 
