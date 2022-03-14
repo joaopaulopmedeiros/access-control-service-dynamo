@@ -33,13 +33,13 @@ namespace AccessControl.WebApi.Services
                 {
                     foreach (var item in list)
                     {
-                        if(!string.IsNullOrEmpty(item[0]))
+                        if(!string.IsNullOrEmpty(item.First()))
                         {
                             response.Add(new PermissionResponse
                             {
                                 Subject = item[0],
-                                Component = item[2],
-                                Action = item[3],
+                                Component = item[1],
+                                Action = item[2],
                             });
                         }
                     }

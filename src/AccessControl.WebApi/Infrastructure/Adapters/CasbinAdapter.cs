@@ -1,6 +1,5 @@
 ﻿using NetCasbin.Model;
 using NetCasbin.Persist;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
