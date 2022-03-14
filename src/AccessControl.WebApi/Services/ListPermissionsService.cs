@@ -38,8 +38,9 @@ namespace AccessControl.WebApi.Services
                             response.Add(new PermissionResponse
                             {
                                 Subject = item[0],
-                                Component = item[1],
-                                Action = item[2],
+                                Domain = item[1],
+                                Component = item[2],
+                                Action = item[3],
                             });
                         }
                     }

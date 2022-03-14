@@ -4,7 +4,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+	  <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.3.10" />
 	  <PackageReference Include="Casbin.NET" Version="1.12.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\Contexts\" />
   </ItemGroup>
 
 </Project>
