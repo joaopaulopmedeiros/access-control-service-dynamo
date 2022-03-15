@@ -4,6 +4,6 @@ namespace AccessControl.WebApi.Requests
 {
     public class ListPermissionsRequest
     {
-        public List<string> Groups { get; set; }
+        public string User { get; set; }
     }
 }
