@@ -4,6 +4,7 @@ using AccessControl.WebApi.Responses;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AccessControl.WebApi.Services
@@ -33,7 +34,7 @@ namespace AccessControl.WebApi.Services
 
             var response = new ListPermissionsResponse();
 
-            response.AddRange(items);
+            response.AddRange(items.SelectMany(i => i.Policies));
 
             return response;
         }

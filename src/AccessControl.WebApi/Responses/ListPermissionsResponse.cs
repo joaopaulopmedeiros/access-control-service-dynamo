@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AccessControl.WebApi.Responses
 {
-    public class ListPermissionsResponse : List<Access>
+    public class ListPermissionsResponse : List<Policy>
     {
     }
 }
