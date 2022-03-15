@@ -8,7 +8,7 @@ namespace AccessControl.WebApi.Models
     public class Access
     {
         public string User { get; set; }
-        [DynamoDBProperty(typeof(PolicyConverter))]
-        public IEnumerable<Policy> Policies { get; set; }
+        [DynamoDBProperty(typeof(PermissionConverter))]
+        public IEnumerable<Permission> Permissions { get; set; }
     }
 }

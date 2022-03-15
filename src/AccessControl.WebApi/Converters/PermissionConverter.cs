@@ -6,11 +6,11 @@ using System.Collections.Generic;
 
 namespace AccessControl.WebApi.Converters
 {
-    public class PolicyConverter : IPropertyConverter
+    public class PermissionConverter : IPropertyConverter
     {
         public object FromEntry(DynamoDBEntry entry)
         {
-            return JsonConvert.DeserializeObject<IEnumerable<Policy>>(entry);
+            return JsonConvert.DeserializeObject<IEnumerable<Permission>>(entry);
         }
 
         public DynamoDBEntry ToEntry(object value)

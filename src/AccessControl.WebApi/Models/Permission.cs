@@ -1,6 +1,6 @@
 ﻿namespace AccessControl.WebApi.Models
 {
-    public class Policy
+    public class Permission
     {
         public string Group { get; set; }
         public string Domain { get; set; }

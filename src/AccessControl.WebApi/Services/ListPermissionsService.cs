@@ -34,7 +34,7 @@ namespace AccessControl.WebApi.Services
 
             var response = new ListPermissionsResponse();
 
-            response.AddRange(items.SelectMany(i => i.Policies));
+            response.AddRange(items.SelectMany(i => i.Permissions));
 
             return response;
         }
