@@ -7,6 +7,6 @@ Serviço de controle de acesso de usuários com operações de baixa latência.
 - Checa se usuário tem acesso a realizar ação;
 - Retorna permissões de usuário;
 
-## Techs
+## 💻 Techs
 - AWS DynamoDB;
 - .NET Core WebApi;
