@@ -30,11 +30,11 @@ namespace AccessControl.WebApi.Services
                 new ScanCondition("User", ScanOperator.Equal, request.User)
             };
 
-            var items = await _context.ScanAsync<Access>(conditions).GetRemainingAsync();
+            var userAccess = await _context.ScanAsync<Access>(conditions).GetRemainingAsync();
 
             var response = new ListPermissionsResponse();
 
-            response.AddRange(items.SelectMany(i => i.Permissions));
+            response.AddRange(userAccess.SelectMany(a => a.Permissions));
 
             return response;
         }
