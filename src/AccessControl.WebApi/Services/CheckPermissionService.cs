@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace AccessControl.WebApi.Services
 {
-    public class CheckPermissionsService
+    public class CheckPermissionService
     {
         private readonly ListPermissionsService _service;
 
-        public CheckPermissionsService(ListPermissionsService service)
+        public CheckPermissionService(ListPermissionsService service)
         {
             _service = service;
         }
@@ -21,7 +21,7 @@ namespace AccessControl.WebApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task<bool> CheckPermissionsAsync(CheckPermissionsRequest request)
+        public async Task<bool> CheckPermissionAsync(CheckPermissionRequest request)
         {
             var permissions = await _service.ListPermissionsAsync
             (

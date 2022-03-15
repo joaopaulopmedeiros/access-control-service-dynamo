@@ -2,7 +2,7 @@
 
 namespace AccessControl.WebApi.Requests
 {
-    public class CheckPermissionsRequest
+    public class CheckPermissionRequest
     {
         public string User { get; set; }
         public string Domain { get; set; }

@@ -11,6 +11,12 @@ namespace AccessControl.WebApi.Controllers
     [Route("[controller]")]
     public class PermissionsController : ControllerBase
     {
+        /// <summary>
+        /// List permissions
+        /// </summary>
+        /// <param name="service"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<ListPermissionsResponse>> ListPermissionsAsync
         (
@@ -22,14 +28,20 @@ namespace AccessControl.WebApi.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Check permission
+        /// </summary>
+        /// <param name="service"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult<ListPermissionsResponse>> CheckPermissionsAsync
+        public async Task<ActionResult<bool>> CheckPermissionAsync
         (
-            [FromServices] CheckPermissionsService service,
-            [FromBody] CheckPermissionsRequest request
+            [FromServices] CheckPermissionService service,
+            [FromBody] CheckPermissionRequest request
         )
         {
-            var result = await service.CheckPermissionsAsync(request);
+            var result = await service.CheckPermissionAsync(request);
             return Ok(result);
         }
     }

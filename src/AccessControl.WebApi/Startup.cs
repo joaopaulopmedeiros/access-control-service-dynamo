@@ -27,7 +27,7 @@ namespace AccessControl.WebApi
             services.AddScoped(s => new AmazonDynamoDBClient(RegionEndpoint.GetBySystemName(Environment.GetEnvironmentVariable("AWS_REGION"))));
             services.AddScoped(s => new DynamoDBContext(s.GetService<AmazonDynamoDBClient>()));
             services.AddTransient<ListPermissionsService>();
-            services.AddTransient<CheckPermissionsService>();
+            services.AddTransient<CheckPermissionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
