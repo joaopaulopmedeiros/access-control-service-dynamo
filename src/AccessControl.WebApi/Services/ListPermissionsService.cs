@@ -1,4 +1,5 @@
-﻿using AccessControl.WebApi.Requests;
+﻿using AccessControl.WebApi.Models;
+using AccessControl.WebApi.Requests;
 using AccessControl.WebApi.Responses;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
@@ -25,10 +26,9 @@ namespace AccessControl.WebApi.Services
         {
             var conditions = new List<ScanCondition> 
             { 
-                new ScanCondition("group", ScanOperator.Contains, request.Groups), 
             };
 
-            var items = await _context.ScanAsync<PermissionResponse>(conditions).GetRemainingAsync();
+            var items = await _context.ScanAsync<Access>(conditions).GetRemainingAsync();
 
             var response = new ListPermissionsResponse();
             
