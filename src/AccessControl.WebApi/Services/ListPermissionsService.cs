@@ -25,7 +25,7 @@ namespace AccessControl.WebApi.Services
         {
             var conditions = new List<ScanCondition> 
             { 
-                new ScanCondition("subject", ScanOperator.Contains, request.Subjects), 
+                new ScanCondition("group", ScanOperator.Contains, request.Groups), 
             };
 
             var items = await _context.ScanAsync<PermissionResponse>(conditions).GetRemainingAsync();
