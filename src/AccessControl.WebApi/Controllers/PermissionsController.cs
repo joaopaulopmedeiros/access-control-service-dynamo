@@ -21,5 +21,16 @@ namespace AccessControl.WebApi.Controllers
             var result = await service.ListPermissionsAsync(request);
             return Ok(result);
         }
+
+        [HttpPost]
+        public async Task<ActionResult<ListPermissionsResponse>> CheckPermissionsAsync
+        (
+            [FromServices] CheckPermissionsService service,
+            [FromBody] CheckPermissionsRequest request
+        )
+        {
+            var result = await service.CheckPermissionsAsync(request);
+            return Ok(result);
+        }
     }
 }
