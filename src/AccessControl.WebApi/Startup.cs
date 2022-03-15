@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using System;
 
 namespace AccessControl.WebApi
@@ -24,10 +25,16 @@ namespace AccessControl.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
             services.AddScoped(s => new AmazonDynamoDBClient(RegionEndpoint.GetBySystemName(Environment.GetEnvironmentVariable("AWS_REGION"))));
             services.AddScoped(s => new DynamoDBContext(s.GetService<AmazonDynamoDBClient>()));
             services.AddTransient<ListPermissionsService>();
             services.AddTransient<CheckPermissionService>();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Access Control API", Description = "Restful api destinada ao controle de acesso de usuários", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +44,10 @@ namespace AccessControl.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Access Control API"));
 
             app.UseHttpsRedirection();
 
