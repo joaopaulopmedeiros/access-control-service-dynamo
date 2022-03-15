@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace AccessControl.WebApi.Requests
+﻿namespace AccessControl.WebApi.Requests
 {
     public class ListPermissionsRequest
     {

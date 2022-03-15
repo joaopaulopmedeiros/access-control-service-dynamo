@@ -25,7 +25,7 @@ namespace AccessControl.WebApi.Services
         /// <returns></returns>
         public async Task<ListPermissionsResponse> ListPermissionsAsync(ListPermissionsRequest request)
         {
-            var conditions = new List<ScanCondition>() 
+            var conditions = new List<ScanCondition>()
             {
                 new ScanCondition("User", ScanOperator.Equal, request.User)
             };

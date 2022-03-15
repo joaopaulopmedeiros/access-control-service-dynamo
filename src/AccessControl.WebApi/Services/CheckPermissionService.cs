@@ -1,7 +1,4 @@
 ﻿using AccessControl.WebApi.Requests;
-using Amazon.DynamoDBv2.DataModel;
-using Amazon.DynamoDBv2.DocumentModel;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,9 +25,9 @@ namespace AccessControl.WebApi.Services
                 new ListPermissionsRequest { User = request.User }
             );
 
-            return permissions.Any(p => 
-                p.Action == request.Action && 
-                p.Component == request.Component && 
+            return permissions.Any(p =>
+                p.Action == request.Action &&
+                p.Component == request.Component &&
                 p.Domain == request.Domain
             );
         }

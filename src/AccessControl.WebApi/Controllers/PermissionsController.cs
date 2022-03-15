@@ -2,7 +2,6 @@
 using AccessControl.WebApi.Responses;
 using AccessControl.WebApi.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AccessControl.WebApi.Controllers
