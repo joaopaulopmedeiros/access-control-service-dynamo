@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessControl.WebApi", "src\AccessControl.WebApi\AccessControl.WebApi.csproj", "{852B3600-75C0-4912-93E3-57AB2CE5727C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessControl.WebApi.Unit.Tests", "..\..\..\Projects\BR-PORTAL-PAGAMENTOS-MM\AccessControl.Api\tests\AccessControl.WebApi.Unit.Tests\AccessControl.WebApi.Unit.Tests.csproj", "{4ABE35D2-D2D5-4C20-967D-59C4142461CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,18 @@ Global
 		{852B3600-75C0-4912-93E3-57AB2CE5727C}.Release|x64.Build.0 = Release|Any CPU
 		{852B3600-75C0-4912-93E3-57AB2CE5727C}.Release|x86.ActiveCfg = Release|Any CPU
 		{852B3600-75C0-4912-93E3-57AB2CE5727C}.Release|x86.Build.0 = Release|Any CPU
+		{4ABE35D2-D2D5-4C20-967D-59C4142461CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ABE35D2-D2D5-4C20-967D-59C4142461CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ABE35D2-D2D5-4C20-967D-59C4142461CE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4ABE35D2-D2D5-4C20-967D-59C4142461CE}.Debug|x64.Build.0 = Debug|Any CPU
+		{4ABE35D2-D2D5-4C20-967D-59C4142461CE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4ABE35D2-D2D5-4C20-967D-59C4142461CE}.Debug|x86.Build.0 = Debug|Any CPU
+		{4ABE35D2-D2D5-4C20-967D-59C4142461CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ABE35D2-D2D5-4C20-967D-59C4142461CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ABE35D2-D2D5-4C20-967D-59C4142461CE}.Release|x64.ActiveCfg = Release|Any CPU
+		{4ABE35D2-D2D5-4C20-967D-59C4142461CE}.Release|x64.Build.0 = Release|Any CPU
+		{4ABE35D2-D2D5-4C20-967D-59C4142461CE}.Release|x86.ActiveCfg = Release|Any CPU
+		{4ABE35D2-D2D5-4C20-967D-59C4142461CE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

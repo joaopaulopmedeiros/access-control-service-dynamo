@@ -33,11 +33,11 @@ namespace AccessControl.WebApi.Controllers
         /// <param name="service"></param>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet("Check")]
         public async Task<ActionResult<bool>> CheckPermissionAsync
         (
             [FromServices] CheckPermissionService service,
-            [FromBody] CheckPermissionRequest request
+            [FromQuery] CheckPermissionRequest request
         )
         {
             var result = await service.CheckPermissionAsync(request);

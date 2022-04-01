@@ -26,9 +26,9 @@ namespace AccessControl.WebApi.Services
             );
 
             return permissions.Any(p =>
-                p.Action == request.Action &&
-                p.Component == request.Component &&
-                p.Domain == request.Domain
+                p.IsActionGranted(request.Action) &&
+                p.Component.ToLower().Equals(request.Component.ToLower()) &&
+                p.Area.ToLower().Equals(request.Area.ToLower())
             );
         }
     }
